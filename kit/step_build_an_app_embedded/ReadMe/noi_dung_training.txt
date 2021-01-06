@@ -1,0 +1,3 @@
+
+1. Giới thiệu tổng quan về kiến trúc một chương trình embedded
+2. Giới thiệu về những bước + thành phần tham gia build một application

@@ -1,0 +1,21 @@
+Những điểm cần lưu ý với Interrupt trên MCU:
+(*) Bắt buộc hiểu quá trình: enable ngắt trên: Core + NVIC + Peripheral
+
+Một số lỗi có thể xảy ra với interrupt, cách thức debug:
+1. Thiết lập ngoại vi sai:
+- Stop debugger (phụ)
+- Mình set cờ pending tương ứng với ngắt trong NVIC
+- Đặt breakpoint trong interrupt handler
+- Go debugger
+-> nếu PC dừng lại ở breakpoint của interrut handler => kết luận: NVIC + Core đã thiết lập đúng
+-> Đọc và tìm hiểu ngoại vi xem đang sai ở đâu
+
+2. Thiết lập NVIC sai:
+- Kiểm tra thanh ghi pending để xem cờ ngắt được gửi về thực sự tương ứng với ID interrupt nào ?
+
+
+3. Thiết lập Core sai:
+- liên quan đến thanh ghi PRIMASK
+
+- Cách thức để kiểm tra
+	-> Kiểm tra xem cờ pending của ngoại vi + NVIC đã được bật chưa => kết luận luôn là có thể core đang bị sai
