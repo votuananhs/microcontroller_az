@@ -35,6 +35,8 @@ HAL_DIR				:= $(PRO_DIR)/hal
 LIB_DIR				:= $(PRO_DIR)/lib
 BOARD_DIR			:= $(PRO_DIR)/board/$(BOARD_NAME)
 
+FREERTOS_DIR 		:= $(LIB_DIR)/FreeRTOS
+
 # output building folder
 BUILD_DIR 			:= ./output
 
@@ -42,12 +44,12 @@ BUILD_DIR 			:= ./output
 # list folder contains C language files
 CC_DIRS				+= $(DEMO_DIR)/freertos/$(PROJ_NAME)/src
 CC_DIRS				+= $(HAL_DIR)/stm32/src
-CC_DIRS				+= $(LIB_DIR)/FreeRTOS-LTS/FreeRTOS/FreeRTOS-Kernel
-CC_DIRS				+= $(LIB_DIR)/FreeRTOS-LTS/FreeRTOS/FreeRTOS-Kernel/portable/GCC/ARM_CM0
+CC_DIRS				+= $(FREERTOS_DIR)/FreeRTOS/Source
+CC_DIRS				+= $(FREERTOS_DIR)/FreeRTOS/Source/portable/GCC/ARM_CM0
 CC_DIRS				+= $(LIB_DIR)/common/src
 CC_DIRS				+= $(BOARD_DIR)/src
 
-FREERTOS_HEAP_DIR	:= $(LIB_DIR)/FreeRTOS-LTS/FreeRTOS/FreeRTOS-Kernel/portable/MemMang
+FREERTOS_HEAP_DIR	:= $(FREERTOS_DIR)/FreeRTOS/Source/portable/MemMang
 
 # list folder contains ASM language files
 ASM_DIRS			+= $(BOARD_DIR)/src
@@ -55,8 +57,8 @@ ASM_DIRS			+= $(BOARD_DIR)/src
 # include folders:
 INC_DIRS			+= $(DEMO_DIR)/freertos/task/inc
 INC_DIRS			+= $(HAL_DIR)/stm32/inc
-INC_DIRS			+= $(LIB_DIR)/FreeRTOS-LTS/FreeRTOS/FreeRTOS-Kernel/include
-INC_DIRS			+= $(LIB_DIR)/FreeRTOS-LTS/FreeRTOS/FreeRTOS-Kernel/portable/GCC/ARM_CM0
+INC_DIRS			+= $(FREERTOS_DIR)/FreeRTOS/Source/include
+INC_DIRS			+= $(FREERTOS_DIR)/FreeRTOS/Source/portable/GCC/ARM_CM0
 INC_DIRS			+= $(LIB_DIR)/common/inc
 INC_DIRS			+= $(BOARD_DIR)/inc
 INC_DIRS			+= $(COMPILER_DIR)/arm-none-eabi/include/sys
